@@ -1,41 +1,9 @@
-//1
-function sumSalaries(salaries) {
-
-    let sum = 0;
-    for (let salary of Object.values(salaries)) {
-      sum += salary;
-    }
+function loadScript(src, callback) {
+    let script = document.createElement('script');
+    script.src = src;
   
-    return sum; // 650
+    script.onload = () => callback(null, script);
+    script.onerror = () => callback(new Error(`Не удалось загрузить скрипт ${src}`));
+  
+    document.head.append(script);
   }
-  
-  let salaries = {
-    "John": 100,
-    "Pete": 300,
-    "Mary": 250
-  };
-  
-  alert( sumSalaries(salaries) );
-
-//2
-  function count(obj) {
-    return Object.keys(obj).length;
-  }
-
-
-
-
-
-
-//3
-
-let user = {
-    name: "John",
-    years: 30
-  };
-  
-  let {name, years: age, isAdmin = false} = user;
-  
-  alert( name ); 
-  alert( age ); 
-  alert( isAdmin ); 
